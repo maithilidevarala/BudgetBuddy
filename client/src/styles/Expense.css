@@ -1,0 +1,38 @@
+.expense-container{
+    width:700px;
+    margin:auto;
+    padding:20px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 0 10px lightgray;
+}
+
+.expense-container input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+.expense-container button{
+    width:100%;
+    padding:10px;
+    background:#dc3545;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+
+table,th,td{
+    border:1px solid #ddd;
+}
+
+th,td{
+    padding:10px;
+    text-align:center;
+}

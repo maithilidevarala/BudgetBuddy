@@ -1,0 +1,133 @@
+.dashboard{
+    width:90%;
+    margin:auto;
+    padding:20px;
+}
+
+.dashboard h1{
+    text-align:center;
+    color:#0d6efd;
+    margin-bottom:30px;
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.card{
+
+    color:white;
+
+    padding:25px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    box-shadow:0 5px 10px rgba(0,0,0,.2);
+
+}
+
+.card h2{
+
+    margin-bottom:15px;
+
+}
+
+.income{
+
+    background:#28a745;
+
+}
+
+.expense{
+
+    background:#dc3545;
+
+}
+
+.budget{
+
+    background:#ffc107;
+
+    color:black;
+
+}
+
+.savings{
+
+    background:#17a2b8;
+
+}
+
+.balance{
+
+    background:#6f42c1;
+
+}
+
+.chart-container{
+
+    margin-top:50px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    box-shadow:0 5px 10px rgba(0,0,0,.15);
+
+}
+
+.transactions{
+
+    margin-top:40px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:10px;
+
+}
+
+.transactions table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.transactions th{
+
+    background:#0d6efd;
+
+    color:white;
+
+    padding:12px;
+
+}
+
+.transactions td{
+
+    border:1px solid #ddd;
+
+    padding:12px;
+
+    text-align:center;
+
+}
+
+.transactions tr:nth-child(even){
+
+    background:#f8f9fa;
+
+}

@@ -1,0 +1,67 @@
+.budget-container {
+
+    width: 700px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px lightgray;
+
+}
+
+.budget-container h2{
+
+    text-align:center;
+    margin-bottom:20px;
+
+}
+
+.budget-container input{
+
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    font-size:16px;
+
+}
+
+.budget-container button{
+
+    width:100%;
+    padding:12px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+.budget-container button:hover{
+
+    background:#084298;
+
+}
+
+table{
+
+    width:100%;
+    margin-top:25px;
+    border-collapse:collapse;
+
+}
+
+table th,
+table td{
+
+    border:1px solid blue;
+    padding:12px;
+    text-align:center;
+
+}
+
+table th{
+
+    background:blue;
+
+}

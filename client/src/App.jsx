@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -8,26 +9,28 @@ import Income from "./pages/Income";
 import Expense from "./pages/Expense";
 import Budget from "./pages/Budget";
 import Savings from "./pages/Savings";
+import Reports from "./pages/Reports";
 
 import MainLayout from "./layouts/MainLayout";
 import { isLoggedIn } from "./utils/auth";
 
-const PrivateRoute = ({ children }) => {
-  return isLoggedIn() ? children : <Navigate to="/login" />;
-};
+function PrivateRoute({ children }) {
+  return isLoggedIn() ? children : <Navigate to="/login" replace />;
+}
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* Public */}
+        {/* Public Pages */}
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected with Layout */}
+        {/* Dashboard */}
         <Route
-          path="/"
+          path="/dashboard"
           element={
             <PrivateRoute>
               <MainLayout>
@@ -37,6 +40,7 @@ function App() {
           }
         />
 
+        {/* Income */}
         <Route
           path="/income"
           element={
@@ -48,6 +52,7 @@ function App() {
           }
         />
 
+        {/* Expense */}
         <Route
           path="/expense"
           element={
@@ -59,6 +64,7 @@ function App() {
           }
         />
 
+        {/* Budget */}
         <Route
           path="/budget"
           element={
@@ -70,6 +76,7 @@ function App() {
           }
         />
 
+        {/* Savings */}
         <Route
           path="/savings"
           element={
@@ -81,8 +88,20 @@ function App() {
           }
         />
 
-        {/* fallback */}
-        <Route path="*" element={<Navigate to="/" />} />
+        {/* Reports */}
+        <Route
+          path="/reports"
+          element={
+            <PrivateRoute>
+              <MainLayout>
+                <Reports />
+              </MainLayout>
+            </PrivateRoute>
+          }
+        />
+
+        {/* Invalid URL */}
+        <Route path="*" element={<Navigate to="/" replace />} />
 
       </Routes>
     </BrowserRouter>

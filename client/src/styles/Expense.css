@@ -1,38 +1,383 @@
-.expense-container{
-    width:700px;
-    margin:auto;
-    padding:20px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* ==========================
+   PAGE BACKGROUND
+========================== */
+
+.expense-page{
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:
+    radial-gradient(circle at top left,#fecaca 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#fde68a 0%,transparent 35%),
+    linear-gradient(135deg,#f8fafc,#fff7ed,#f9fafb);
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.expense-header{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.expense-header h1{
+
+    font-size:40px;
+
+    color:#1f2937;
+
+    margin-bottom:10px;
+
+}
+
+.expense-header p{
+
+    font-size:18px;
+
+    color:#6b7280;
+
+}
+
+/* ==========================
+   SUMMARY CARD
+========================== */
+
+.expense-summary{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:35px;
+
+}
+
+.summary-card{
+
+    width:330px;
+
     background:white;
-    border-radius:10px;
-    box-shadow:0 0 10px lightgray;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border-left:8px solid #dc2626;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.3s;
+
 }
 
-.expense-container input{
-    width:100%;
-    padding:10px;
-    margin:10px 0;
+.summary-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
 }
 
-.expense-container button{
+.summary-card h3{
+
+    color:#555;
+
+    margin-bottom:15px;
+
+    font-size:20px;
+
+}
+
+.summary-card h2{
+
+    color:#dc2626;
+
+    font-size:38px;
+
+}
+
+/* ==========================
+   FORM
+========================== */
+
+.expense-form-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.expense-form-card h2{
+
+    margin-bottom:25px;
+
+    color:#1f2937;
+
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:18px;
+
+}
+
+.form-grid input{
+
     width:100%;
-    padding:10px;
-    background:#dc3545;
-    color:white;
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.form-grid input:focus{
+
+    outline:none;
+
+    border-color:#dc2626;
+
+    box-shadow:0 0 10px rgba(220,38,38,.2);
+
+}
+
+.form-grid button{
+
+    grid-column:1/-1;
+
+    padding:15px;
+
     border:none;
+
+    border-radius:12px;
+
+    background:#dc2626;
+
+    color:white;
+
+    font-size:18px;
+
     cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.form-grid button:hover{
+
+    background:#b91c1c;
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================
+   TABLE
+========================== */
+
+.expense-table-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.expense-table-card h2{
+
+    margin-bottom:25px;
+
+    color:#1f2937;
+
 }
 
 table{
+
     width:100%;
-    margin-top:20px;
+
     border-collapse:collapse;
+
 }
 
-table,th,td{
-    border:1px solid #ddd;
+thead{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+th{
+
+    padding:18px;
+
+    font-size:16px;
+
+}
+
+td{
+
+    padding:16px;
+
+    text-align:center;
+
+    border-bottom:1px solid #eee;
+
+}
+
+tbody tr{
+
+    transition:.3s;
+
+}
+
+tbody tr:hover{
+
+    background:#fef2f2;
+
+}
+
+.expense-amount{
+
+    color:#dc2626;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+/* ==========================
+   CATEGORY TAG
+========================== */
+
+.category-tag{
+
+    display:inline-block;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+/* ==========================
+   EMPTY BOX
+========================== */
+
+.empty-box{
+
+    padding:60px;
+
+    text-align:center;
+
+    color:#777;
+
+}
+
+.empty-box h3{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+.empty-box p{
+
+    font-size:17px;
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+.expense-page{
+
+padding:20px;
+
+}
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.summary-card{
+
+width:100%;
+
+}
+
+.expense-header h1{
+
+font-size:30px;
+
+}
+
+table{
+
+font-size:14px;
+
+display:block;
+
+overflow-x:auto;
+
 }
 
 th,td{
-    padding:10px;
-    text-align:center;
+
+padding:12px;
+
+}
+
 }

@@ -4,125 +4,280 @@ import "../styles/Budget.css";
 
 function Budget() {
 
-    const [amount, setAmount] = useState("");
-    const [month, setMonth] = useState("");
-    const [year, setYear] = useState("");
+  const [amount, setAmount] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
 
-    const [budgets, setBudgets] = useState([]);
+  const [budgets, setBudgets] = useState([]);
 
-    const fetchBudgets = async () => {
-        try {
-            const res = await axios.get("http://localhost:5000/api/budget");
-            setBudgets(res.data);
-        } catch (err) {
-            console.log(err);
+  // Fetch Budgets
+
+  const fetchBudgets = async () => {
+
+    try {
+
+      const res = await axios.get(
+        "http://localhost:5000/api/budget"
+      );
+
+      setBudgets(res.data);
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
+  };
+
+  useEffect(() => {
+
+    fetchBudgets();
+
+  }, []);
+
+  // Save Budget
+
+  const handleSave = async () => {
+
+    if (!amount || !month || !year) {
+
+      alert("Please fill all fields");
+
+      return;
+
+    }
+
+    try {
+
+      await axios.post(
+        "http://localhost:5000/api/budget",
+        {
+
+          amount: Number(amount),
+          month,
+          year: Number(year)
+
         }
-    };
+      );
 
-    useEffect(() => {
-        fetchBudgets();
-    }, []);
+      alert("Budget Saved Successfully");
 
-    const handleSave = async () => {
+      setAmount("");
+      setMonth("");
+      setYear("");
 
-        if (!amount || !month || !year) {
-            alert("Please fill all fields");
-            return;
-        }
+      fetchBudgets();
 
-        try {
+    } catch (err) {
 
-            await axios.post("http://localhost:5000/api/budget", {
+      console.log(err);
 
-                amount: Number(amount),
-                month,
-                year: Number(year)
+      alert("Error Saving Budget");
 
-            });
+    }
 
-            alert("Budget Saved Successfully");
+  };
 
-            setAmount("");
-            setMonth("");
-            setYear("");
+  // Total Budget
 
-            fetchBudgets();
+  const totalBudget = budgets.reduce(
 
-        } catch (err) {
+    (sum, item) => sum + item.amount,
 
-            console.log(err);
-            alert("Error Saving Budget");
+    0
 
-        }
+  );
 
-    };
+  return (
 
-    return (
+    <div className="budget-page">
 
-        <div className="budget-container">
+      {/* Header */}
 
-            <h2>Budget Planner</h2>
+      <div className="budget-header">
 
-            <input
-                type="number"
-                placeholder="Budget Amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-            />
+        <h1>💳 Budget Planner</h1>
 
-            <input
-                type="text"
-                placeholder="Month"
-                value={month}
-                onChange={(e) => setMonth(e.target.value)}
-            />
+        <p>
 
-            <input
-                type="number"
-                placeholder="Year"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-            />
+          Plan your monthly budget and stay financially organized.
 
-            <button onClick={handleSave}>
-                Save Budget
-            </button>
+        </p>
 
-            <table>
+      </div>
 
-                <thead>
+      {/* Summary */}
 
-                    <tr>
+      <div className="budget-summary">
 
-                        <th>Amount</th>
-                        <th>Month</th>
-                        <th>Year</th>
+        <div className="summary-card">
 
-                    </tr>
+          <h3>Total Budget</h3>
 
-                </thead>
-
-                <tbody>
-
-                    {budgets.map((budget) => (
-
-                        <tr key={budget._id}>
-
-                            <td>₹{budget.amount}</td>
-                            <td>{budget.month}</td>
-                            <td>{budget.year}</td>
-
-                        </tr>
-
-                    ))}
-
-                </tbody>
-
-            </table>
+          <h2>₹ {totalBudget}</h2>
 
         </div>
 
-    );
+      </div>
+
+      {/* Form */}
+
+      <div className="budget-form-card">
+
+        <h2>Create Budget</h2>
+
+        <div className="form-grid">
+
+          <input
+
+            type="number"
+
+            placeholder="Budget Amount"
+
+            value={amount}
+
+            onChange={(e) => setAmount(e.target.value)}
+
+          />
+
+          <input
+
+            type="text"
+
+            placeholder="Month"
+
+            value={month}
+
+            onChange={(e) => setMonth(e.target.value)}
+
+          />
+
+          <input
+
+            type="number"
+
+            placeholder="Year"
+
+            value={year}
+
+            onChange={(e) => setYear(e.target.value)}
+
+          />
+
+          <button onClick={handleSave}>
+
+            + Save Budget
+
+          </button>
+
+        </div>
+
+      </div>
+
+      {/* Budget History */}
+
+      <div className="budget-table-card">
+
+        <h2>Budget History</h2>
+
+        {
+
+          budgets.length === 0 ?
+
+          (
+
+            <div className="empty-box">
+
+              <h3>No Budget Found</h3>
+
+              <p>
+
+                Create your first budget plan.
+
+              </p>
+
+            </div>
+
+          )
+
+          :
+
+          (
+
+            <table>
+
+              <thead>
+
+                <tr>
+
+                  <th>#</th>
+
+                  <th>Budget</th>
+
+                  <th>Month</th>
+
+                  <th>Year</th>
+
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                {
+
+                  budgets.map((budget, index) => (
+
+                    <tr key={budget._id}>
+
+                      <td>
+
+                        {index + 1}
+
+                      </td>
+
+                      <td className="budget-amount">
+
+                        ₹ {budget.amount}
+
+                      </td>
+
+                      <td>
+
+                        <span className="month-tag">
+
+                          {budget.month}
+
+                        </span>
+
+                      </td>
+
+                      <td>
+
+                        {budget.year}
+
+                      </td>
+
+                    </tr>
+
+                  ))
+
+                }
+
+              </tbody>
+
+            </table>
+
+          )
+
+        }
+
+      </div>
+
+    </div>
+
+  );
 
 }
 

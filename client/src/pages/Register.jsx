@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../styles/Register.css";
 
 function Register() {
@@ -19,70 +19,98 @@ function Register() {
 
             const res = await axios.post(
                 "http://localhost:5000/api/auth/register",
-                {
-                    name,
-                    email,
-                    password
-                }
+                { name, email, password }
             );
 
             alert(res.data.message);
-
             navigate("/login");
 
         } catch (err) {
-
-            alert(
-                err.response?.data?.message ||
-                "Registration Failed"
-            );
-
+            alert(err.response?.data?.message || "Registration Failed");
         }
-
     };
 
     return (
 
         <div className="register-container">
 
-            <form className="register-form" onSubmit={handleRegister}>
+            {/* glowing background */}
+            <div className="blob r1"></div>
+            <div className="blob r2"></div>
+            <div className="blob r3"></div>
 
-                <h2>Create Account</h2>
+            <div className="register-card">
 
-                <input
-                    type="text"
-                    placeholder="Enter Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
+                {/* LEFT PANEL */}
+                <div className="left-panel">
 
-                <input
-                    type="email"
-                    placeholder="Enter Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
+                    <div className="logo">💰 BudgetBuddy</div>
 
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
+                    <h1>Create Account</h1>
 
-                <button type="submit">
-                    Register
-                </button>
+                    <p>
+                        Join BudgetBuddy and take control of your financial future.
+                        Track income, expenses, savings & reports easily.
+                    </p>
 
-            </form>
+                    <ul>
+                        <li>📊 Smart Dashboard</li>
+                        <li>💸 Expense Tracking</li>
+                        <li>💰 Income Management</li>
+                        <li>🎯 Savings Goals</li>
+                    </ul>
+
+                </div>
+
+                {/* RIGHT PANEL */}
+                <div className="right-panel">
+
+                    <form onSubmit={handleRegister}>
+
+                        <h2>Register</h2>
+
+                        <input
+                            type="text"
+                            placeholder="Full Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+
+                        <input
+                            type="email"
+                            placeholder="Email Address"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+
+                        <button type="submit">
+                            Create Account
+                        </button>
+
+                        <p className="switch">
+                            Already have an account?
+                            <Link to="/login"> Login</Link>
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
 
         </div>
 
     );
-
 }
 
 export default Register;

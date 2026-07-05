@@ -1,112 +1,448 @@
-.reports-container{
-    width:95%;
-    margin:30px auto;
-    padding:20px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
-.reports-container h1{
+/* ==========================
+   PAGE BACKGROUND
+========================== */
+
+.reports-page{
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:
+    radial-gradient(circle at top left,#dbeafe 0%,transparent 30%),
+    radial-gradient(circle at top right,#bbf7d0 0%,transparent 30%),
+    radial-gradient(circle at bottom left,#fde68a 0%,transparent 35%),
+    linear-gradient(135deg,#f8fafc,#eef7ff,#f0fdf4);
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.reports-header{
+
     text-align:center;
-    color:#0d6efd;
-    margin-bottom:30px;
+
+    margin-bottom:40px;
+
 }
 
-.reports-container h2{
-    color:#333;
-    margin-top:40px;
+.reports-header h1{
+
+    font-size:42px;
+
+    color:#1f2937;
+
+    margin-bottom:10px;
+
 }
+
+.reports-header p{
+
+    color:#6b7280;
+
+    font-size:18px;
+
+}
+
+/* ==========================
+   SUMMARY CARDS
+========================== */
 
 .report-cards{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 
-    gap:20px;
+    gap:25px;
 
-    margin-bottom:30px;
+    margin-bottom:40px;
 
 }
 
 .report-card{
 
-    color:white;
+    background:white;
 
-    padding:20px;
+    padding:30px;
 
-    border-radius:10px;
+    border-radius:22px;
 
     text-align:center;
 
-    box-shadow:0 5px 10px rgba(0,0,0,.2);
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
 
 }
 
-.income{
+.report-card:hover{
 
-    background:#198754;
+    transform:translateY(-8px);
 
-}
-
-.expense{
-
-    background:#dc3545;
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
 
 }
 
-.budget{
+.report-card h3{
 
-    background:#ffc107;
+    color:#666;
 
-    color:black;
+    margin-bottom:15px;
+
+    font-size:20px;
+
+}
+
+.report-card h2{
+
+    font-size:38px;
+
+    margin-bottom:10px;
 
 }
 
-.savings{
+.report-card p{
 
-    background:#0dcaf0;
+    color:#888;
 
 }
+
+.income-card{
+
+    border-left:8px solid #16a34a;
+
+}
+
+.income-card h2{
+
+    color:#16a34a;
+
+}
+
+.expense-card{
+
+    border-left:8px solid #dc2626;
+
+}
+
+.expense-card h2{
+
+    color:#dc2626;
+
+}
+
+.balance-card{
+
+    border-left:8px solid #2563eb;
+
+}
+
+.balance-card h2{
+
+    color:#2563eb;
+
+}
+
+/* ==========================
+   TABLE CARD
+========================== */
+
+.report-table-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.report-table-card h2{
+
+    margin-bottom:25px;
+
+    color:#1f2937;
+
+}
+
+/* ==========================
+   TABLE
+========================== */
 
 table{
 
     width:100%;
 
-    margin-top:15px;
-
     border-collapse:collapse;
-
-    background:white;
 
 }
 
-table th{
+thead{
 
-    background:#0d6efd;
+    background:#2563eb;
 
     color:white;
 
-    padding:12px;
+}
+
+th{
+
+    padding:16px;
+
+    font-size:16px;
 
 }
 
-table td{
+td{
 
-    padding:10px;
+    padding:16px;
+
+    border-bottom:1px solid #eee;
 
     text-align:center;
 
-    border:1px solid #ddd;
+}
+
+tbody tr{
+
+    transition:.3s;
 
 }
 
-table tr:nth-child(even){
+tbody tr:hover{
 
-    background:#f8f9fa;
+    background:#f8fafc;
 
 }
 
-table tr:hover{
+.income-text{
 
-    background:#e9ecef;
+    color:#16a34a;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+.expense-text{
+
+    color:#dc2626;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+/* ==========================
+   INSIGHTS
+========================== */
+
+.insights-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.insights-card h2{
+
+    margin-bottom:30px;
+
+    color:#1f2937;
+
+}
+
+.insight-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+.insight-item{
+
+    padding:25px;
+
+    border-radius:18px;
+
+    background:#f8fafc;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.insight-item:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.insight-item h3{
+
+    color:#555;
+
+    margin-bottom:15px;
+
+}
+
+.insight-item h1{
+
+    font-size:36px;
+
+    margin-bottom:10px;
+
+}
+
+.insight-item p{
+
+    color:#777;
+
+    line-height:1.6;
+
+}
+
+.green{
+
+    color:#16a34a;
+
+}
+
+.red{
+
+    color:#dc2626;
+
+}
+
+.blue{
+
+    color:#2563eb;
+
+}
+
+/* ==========================
+   EMPTY STATE
+========================== */
+
+.empty-box{
+
+    text-align:center;
+
+    padding:60px;
+
+    color:#777;
+
+}
+
+.empty-box h3{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#eef2ff;
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+.reports-page{
+
+padding:20px;
+
+}
+
+.reports-header h1{
+
+font-size:30px;
+
+}
+
+.report-cards{
+
+grid-template-columns:1fr;
+
+}
+
+.insight-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.report-card{
+
+padding:25px;
+
+}
+
+table{
+
+display:block;
+
+overflow-x:auto;
+
+font-size:14px;
+
+}
+
+th,td{
+
+padding:12px;
+
+}
 
 }

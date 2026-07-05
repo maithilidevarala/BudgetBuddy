@@ -1,22 +1,367 @@
-.income-container {
-  width: 300px;
-  margin: auto;
-  text-align: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+/* ===========================
+   PAGE BACKGROUND
+=========================== */
+
+.income-page{
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:
+    radial-gradient(circle at top left,#fde68a 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#bfdbfe 0%,transparent 35%),
+    linear-gradient(135deg,#f8fafc,#eef7ff,#f9fafb);
+
 }
 
-button {
-  padding: 8px 15px;
-  background: green;
-  color: white;
-  border: none;
-  cursor: pointer;
+/* ===========================
+   HEADER
+=========================== */
+
+.income-header{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.income-header h1{
+
+    font-size:40px;
+
+    color:#1f2937;
+
+    margin-bottom:10px;
+
+}
+
+.income-header p{
+
+    font-size:18px;
+
+    color:#6b7280;
+
+}
+
+/* ===========================
+   SUMMARY CARD
+=========================== */
+
+.income-summary{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:30px;
+
+}
+
+.summary-card{
+
+    width:320px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    border-left:8px solid #16a34a;
+
+    transition:.3s;
+
+}
+
+.summary-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.summary-card h3{
+
+    color:#666;
+
+    font-size:20px;
+
+    margin-bottom:15px;
+
+}
+
+.summary-card h2{
+
+    font-size:38px;
+
+    color:#16a34a;
+
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+.income-form-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    margin-bottom:35px;
+
+}
+
+.income-form-card h2{
+
+    margin-bottom:25px;
+
+    color:#1f2937;
+
+}
+
+.input-group{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.input-group input{
+
+    flex:1;
+
+    min-width:250px;
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    transition:.3s;
+
+}
+
+.input-group input:focus{
+
+    outline:none;
+
+    border-color:#16a34a;
+
+    box-shadow:0 0 10px rgba(22,163,74,.2);
+
+}
+
+.input-group button{
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#16a34a;
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.input-group button:hover{
+
+    background:#15803d;
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+   TABLE CARD
+=========================== */
+
+.income-table-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.income-table-card h2{
+
+    margin-bottom:25px;
+
+    color:#1f2937;
+
+}
+
+/* ===========================
+   TABLE
+=========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+th{
+
+    padding:18px;
+
+    text-align:center;
+
+}
+
+td{
+
+    padding:16px;
+
+    text-align:center;
+
+    border-bottom:1px solid #eee;
+
+}
+
+tbody tr{
+
+    transition:.3s;
+
+}
+
+tbody tr:hover{
+
+    background:#f0fdf4;
+
+}
+
+.income-amount{
+
+    color:#16a34a;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+
+.empty-box{
+
+    padding:50px;
+
+    text-align:center;
+
+    color:#777;
+
+}
+
+.empty-box h3{
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.income-page{
+
+padding:20px;
+
+}
+
+.input-group{
+
+flex-direction:column;
+
+}
+
+.input-group input{
+
+width:100%;
+
+}
+
+.input-group button{
+
+width:100%;
+
+}
+
+.summary-card{
+
+width:100%;
+
+}
+
+table{
+
+font-size:14px;
+
+}
+
+th,td{
+
+padding:12px;
+
+}
+
+.income-header h1{
+
+font-size:30px;
+
+}
+
 }

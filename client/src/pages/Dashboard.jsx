@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import ExpenseChart from "../components/ExpenseChart";
+import "../styles/Dashboard.css";
 
 function Dashboard() {
+
   const [income, setIncome] = useState([]);
   const [expense, setExpense] = useState([]);
 
@@ -12,87 +14,100 @@ function Dashboard() {
 
   const loadData = async () => {
     try {
+
       const incomeRes = await api.get("/income");
       const expenseRes = await api.get("/expense");
 
       setIncome(incomeRes.data);
       setExpense(expenseRes.data);
+
     } catch (err) {
+
       console.log("Dashboard Error:", err);
+
     }
   };
 
-  // Calculations
   const totalIncome = income.reduce((sum, item) => sum + item.amount, 0);
   const totalExpense = expense.reduce((sum, item) => sum + item.amount, 0);
   const balance = totalIncome - totalExpense;
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>📊 Dashboard</h2>
 
-      {/* SUMMARY CARDS */}
-      <div style={{ display: "flex", gap: "20px", marginTop: "20px", flexWrap: "wrap" }}>
+    <div className="dashboard-page">
 
-        {/* INCOME CARD */}
-        <div style={{
-          padding: "20px",
-          backgroundColor: "#e8f5e9",
-          borderRadius: "10px",
-          width: "200px",
-          boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
-        }}>
-          <h3>Income</h3>
-          <h2 style={{ color: "green" }}>₹ {totalIncome}</h2>
+      <h2 className="dashboard-title">
+        📊 Dashboard
+      </h2>
+
+      <div className="dashboard-cards">
+
+        <div className="dashboard-card income-card">
+
+          <h3>Total Income</h3>
+
+          <h2>₹ {totalIncome}</h2>
+
         </div>
 
-        {/* EXPENSE CARD */}
-        <div style={{
-          padding: "20px",
-          backgroundColor: "#ffebee",
-          borderRadius: "10px",
-          width: "200px",
-          boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
-        }}>
-          <h3>Expense</h3>
-          <h2 style={{ color: "red" }}>₹ {totalExpense}</h2>
+        <div className="dashboard-card expense-card">
+
+          <h3>Total Expense</h3>
+
+          <h2>₹ {totalExpense}</h2>
+
         </div>
 
-        {/* BALANCE CARD */}
-        <div style={{
-          padding: "20px",
-          backgroundColor: "#e3f2fd",
-          borderRadius: "10px",
-          width: "200px",
-          boxShadow: "0px 2px 5px rgba(0,0,0,0.1)"
-        }}>
-          <h3>Balance</h3>
-          <h2 style={{ color: "blue" }}>₹ {balance}</h2>
+        <div className="dashboard-card balance-card">
+
+          <h3>Current Balance</h3>
+
+          <h2>₹ {balance}</h2>
+
         </div>
 
       </div>
 
-      {/* CHART SECTION */}
-      <div style={{ marginTop: "40px" }}>
+      <div className="chart-section">
+
         <ExpenseChart />
+
       </div>
 
-      {/* QUICK SUMMARY */}
-      <div style={{ marginTop: "30px" }}>
+      <div className="summary-box">
+
         <h3>📌 Quick Summary</h3>
 
-        <p>✔ Total Income: ₹ {totalIncome}</p>
-        <p>✔ Total Expense: ₹ {totalExpense}</p>
-        <p>✔ Remaining Balance: ₹ {balance}</p>
+        <p>✔ Total Income : ₹ {totalIncome}</p>
+
+        <p>✔ Total Expense : ₹ {totalExpense}</p>
+
+        <p>✔ Remaining Balance : ₹ {balance}</p>
 
         {balance >= 0 ? (
-          <p style={{ color: "green" }}>✔ You are saving money</p>
+
+          <p className="profit">
+
+            ✔ Great! You're saving money every month.
+
+          </p>
+
         ) : (
-          <p style={{ color: "red" }}>⚠ You are in loss</p>
+
+          <p className="loss">
+
+            ⚠ Your expenses are higher than your income.
+
+          </p>
+
         )}
+
       </div>
+
     </div>
+
   );
+
 }
 
 export default Dashboard;

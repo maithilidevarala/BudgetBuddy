@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css";
 
@@ -18,77 +18,96 @@ function Login() {
 
             const response = await axios.post(
                 "http://localhost:5000/api/auth/login",
-                {
-                    email,
-                    password
-                }
+                { email, password }
             );
 
-            // Save Token
             localStorage.setItem("token", response.data.token);
-
-            // Save User
-            localStorage.setItem(
-                "user",
-                JSON.stringify(response.data.user)
-            );
+            localStorage.setItem("user", JSON.stringify(response.data.user));
 
             alert(response.data.message);
 
             navigate("/dashboard");
 
         } catch (error) {
-
-            alert(
-                error.response?.data?.message ||
-                "Login Failed"
-            );
-
+            alert(error.response?.data?.message || "Login Failed");
         }
-
     };
 
     return (
 
         <div className="login-container">
 
-            <form
-                className="login-form"
-                onSubmit={handleLogin}
-            >
+            {/* animated background */}
+            <div className="blob b1"></div>
+            <div className="blob b2"></div>
+            <div className="blob b3"></div>
 
-                <h2>Login</h2>
+            <div className="login-card">
 
-                <input
-                    type="email"
-                    placeholder="Enter Email"
-                    value={email}
-                    onChange={(e) =>
-                        setEmail(e.target.value)
-                    }
-                    required
-                />
+                {/* LEFT */}
+                <div className="left-panel">
 
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    value={password}
-                    onChange={(e) =>
-                        setPassword(e.target.value)
-                    }
-                    required
-                />
+                    <div className="logo">💰 BudgetBuddy</div>
 
-                <button type="submit">
-                    Login
-                </button>
+                    <h1>Welcome Back</h1>
 
-            </form>
+                    <p>
+                        Track your money smarter, faster and easier.
+                        Your financial dashboard is waiting.
+                    </p>
+
+                    <ul>
+                        <li>📊 Smart Analytics</li>
+                        <li>💸 Expense Tracking</li>
+                        <li>💰 Income Insights</li>
+                        <li>🎯 Budget Control</li>
+                    </ul>
+
+                </div>
+
+                {/* RIGHT */}
+                <div className="right-panel">
+
+                    <form onSubmit={handleLogin}>
+
+                        <h2>Login</h2>
+
+                        <div className="input-box">
+                            <input
+                                type="email"
+                                placeholder="Enter Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+
+                        <div className="input-box">
+                            <input
+                                type="password"
+                                placeholder="Enter Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+
+                        <button type="submit">Login</button>
+
+                        <p className="switch">
+                            Don’t have an account?
+                            <Link to="/register"> Register</Link>
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
 
         </div>
 
     );
-
 }
 
 export default Login;

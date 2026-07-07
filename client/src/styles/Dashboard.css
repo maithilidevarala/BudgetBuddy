@@ -1,207 +1,779 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 }
 
-/* Background */
+/* ===================================
+   PAGE BACKGROUND
+=================================== */
 
 .dashboard-page{
 
-min-height:100vh;
+    min-height:100vh;
 
-padding:35px;
+    padding:35px;
 
-background:
-radial-gradient(circle at top left,#fde68a 0%,transparent 28%),
-radial-gradient(circle at bottom right,#bfdbfe 0%,transparent 30%),
-linear-gradient(135deg,#f8fafc,#eef7ff,#f9fafb);
-
-background-size:cover;
-
-}
-
-/* Title */
-
-.dashboard-title{
-
-font-size:38px;
-
-font-weight:bold;
-
-margin-bottom:35px;
-
-color:#1f2937;
+    background:
+    radial-gradient(circle at top left,#dbeafe 0%,transparent 30%),
+    radial-gradient(circle at top right,#dcfce7 0%,transparent 28%),
+    radial-gradient(circle at bottom left,#fef3c7 0%,transparent 35%),
+    linear-gradient(135deg,#f8fafc,#eef7ff,#f5fffb);
 
 }
 
-/* Cards */
+/* ===================================
+   WELCOME CARD
+=================================== */
+
+.welcome-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    margin-bottom:35px;
+
+    padding:35px 40px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.5);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+.welcome-card h1{
+
+    font-size:42px;
+
+    color:#1f2937;
+
+    margin-bottom:12px;
+
+}
+
+.welcome-card span{
+
+    color:#2563eb;
+
+}
+
+.welcome-card p{
+
+    color:#6b7280;
+
+    font-size:18px;
+
+}
+
+.welcome-icon{
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:55px;
+
+    box-shadow:0 18px 35px rgba(37,99,235,.30);
+
+}
+
+/* ===================================
+   DASHBOARD CARDS
+=================================== */
 
 .dashboard-cards{
 
-display:flex;
+    display:grid;
 
-gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
-flex-wrap:wrap;
+    gap:25px;
 
-margin-bottom:35px;
+    margin-bottom:35px;
 
 }
 
 .dashboard-card{
 
-flex:1;
+    position:relative;
 
-min-width:260px;
+    overflow:hidden;
 
-padding:30px;
+    padding:28px;
 
-border-radius:22px;
+    border-radius:24px;
 
-background:rgba(255,255,255,.75);
+    background:rgba(255,255,255,.78);
 
-backdrop-filter:blur(15px);
+    backdrop-filter:blur(15px);
 
-border:1px solid rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.5);
 
-box-shadow:0 12px 30px rgba(0,0,0,.08);
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
 
-transition:.3s;
+    transition:.35s;
 
 }
 
 .dashboard-card:hover{
 
-transform:translateY(-10px);
+    transform:translateY(-10px);
 
-box-shadow:0 20px 40px rgba(0,0,0,.15);
+    box-shadow:0 25px 45px rgba(0,0,0,.15);
 
 }
 
-/* Card Colors */
+.card-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:28px;
+
+    color:white;
+
+    margin-bottom:18px;
+
+}
 
 .income-card{
 
-border-left:8px solid #16a34a;
+    border-left:8px solid #16a34a;
+
+}
+
+.income-card .card-icon{
+
+    background:#16a34a;
 
 }
 
 .expense-card{
 
-border-left:8px solid #dc2626;
+    border-left:8px solid #dc2626;
+
+}
+
+.expense-card .card-icon{
+
+    background:#dc2626;
 
 }
 
 .balance-card{
 
-border-left:8px solid #2563eb;
+    border-left:8px solid #2563eb;
+
+}
+
+.balance-card .card-icon{
+
+    background:#2563eb;
+
+}
+
+.savings-card{
+
+    border-left:8px solid #f59e0b;
+
+}
+
+.savings-card .card-icon{
+
+    background:#f59e0b;
 
 }
 
 .dashboard-card h3{
 
-font-size:22px;
+    color:#6b7280;
 
-color:#555;
+    font-size:18px;
 
-margin-bottom:18px;
+    margin-bottom:12px;
 
 }
 
 .dashboard-card h2{
 
-font-size:34px;
+    font-size:34px;
 
-font-weight:bold;
+    color:#1f2937;
 
-}
-
-/* Chart */
-
-.chart-section{
-
-margin-top:20px;
-
-padding:25px;
-
-background:white;
-
-border-radius:22px;
-
-box-shadow:0 12px 30px rgba(0,0,0,.08);
+    margin-bottom:10px;
 
 }
 
-/* Summary */
+.dashboard-card p{
+
+    color:#9ca3af;
+
+    font-size:15px;
+
+}
+
+/* ===================================
+   QUICK ACTIONS
+=================================== */
+
+.quick-actions{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+}
+
+.quick-actions h2{
+
+    margin-bottom:25px;
+
+    color:#1f2937;
+
+}
+
+.action-buttons{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:20px;
+
+}
+
+.action-buttons button{
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.action-buttons button:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 25px rgba(37,99,235,.35);
+
+}
+
+/* ===================================
+   CHART SECTION
+=================================== */
+
+.chart-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+}
+
+.chart-card h2{
+
+    color:#1f2937;
+
+    margin-bottom:25px;
+
+    font-size:28px;
+
+}
+/* ===================================
+   RECENT ACTIVITY
+=================================== */
+
+.activity-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+
+    margin-bottom:35px;
+
+}
+
+.activity-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.activity-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+.activity-card h2{
+
+    color:#1f2937;
+
+    margin-bottom:20px;
+
+    font-size:24px;
+
+}
+
+.activity-card h3{
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+}
+
+.activity-card p{
+
+    color:#6b7280;
+
+    font-size:17px;
+
+}
+
+/* ===================================
+   SUMMARY
+=================================== */
 
 .summary-box{
 
-margin-top:35px;
+    background:white;
 
-padding:30px;
+    border-radius:24px;
 
-background:white;
+    padding:35px;
 
-border-radius:22px;
-
-box-shadow:0 12px 30px rgba(0,0,0,.08);
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
 
 }
 
-.summary-box h3{
+.summary-box h2{
 
-font-size:28px;
+    color:#1f2937;
 
-margin-bottom:20px;
+    margin-bottom:30px;
 
-color:#1f2937;
-
-}
-
-.summary-box p{
-
-font-size:18px;
-
-margin:12px 0;
+    font-size:30px;
 
 }
 
-.profit{
+.summary-list{
 
-color:#16a34a;
+    display:grid;
 
-font-weight:bold;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 
-}
+    gap:20px;
 
-.loss{
-
-color:#dc2626;
-
-font-weight:bold;
+    margin-bottom:30px;
 
 }
 
-/* Responsive */
+.summary-item{
 
-@media(max-width:900px){
+    background:#f8fafc;
 
-.dashboard-cards{
+    border-radius:16px;
+
+    padding:22px;
+
+    transition:.3s;
+
+}
+
+.summary-item:hover{
+
+    background:#eef7ff;
+
+    transform:translateY(-5px);
+
+}
+
+.summary-item span{
+
+    display:block;
+
+    color:#6b7280;
+
+    font-size:15px;
+
+    margin-bottom:10px;
+
+}
+
+.summary-item strong{
+
+    font-size:26px;
+
+}
+
+/* ===================================
+   TEXT COLORS
+=================================== */
+
+.income-text{
+
+    color:#16a34a;
+
+    font-weight:bold;
+
+}
+
+.expense-text{
+
+    color:#dc2626;
+
+    font-weight:bold;
+
+}
+
+.balance-text{
+
+    color:#2563eb;
+
+    font-weight:bold;
+
+}
+
+.savings-text{
+
+    color:#f59e0b;
+
+    font-weight:bold;
+
+}
+
+/* ===================================
+   SUCCESS MESSAGE
+=================================== */
+
+.success-box{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+    padding:20px;
+
+    border-left:6px solid #16a34a;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}
+
+/* ===================================
+   WARNING MESSAGE
+=================================== */
+
+.warning-box{
+
+    background:#fee2e2;
+
+    color:#991b1b;
+
+    padding:20px;
+
+    border-left:6px solid #dc2626;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+}
+
+/* ===================================
+   SCROLLBAR
+=================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#eef2ff;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#3b82f6;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#2563eb;
+
+}
+
+/* ===================================
+   FADE ANIMATION
+=================================== */
+
+.dashboard-card,
+.activity-card,
+.chart-card,
+.quick-actions,
+.summary-box,
+.welcome-card{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media(max-width:992px){
+
+.dashboard-page{
+
+padding:25px;
+
+}
+
+.welcome-card{
 
 flex-direction:column;
 
+text-align:center;
+
+gap:25px;
+
 }
 
-.dashboard-title{
+.dashboard-cards{
 
-font-size:30px;
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.summary-list{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard-page{
+
+padding:20px;
+
+}
+
+.welcome-card h1{
+
+font-size:32px;
+
+}
+
+.welcome-card p{
+
+font-size:16px;
+
+}
+
+.dashboard-cards{
+
+grid-template-columns:1fr;
+
+}
+
+.activity-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.summary-list{
+
+grid-template-columns:1fr;
+
+}
+
+.action-buttons{
+
+grid-template-columns:1fr;
+
+}
+
+.chart-card{
+
+overflow-x:auto;
+
+}
+
+.dashboard-card h2{
+
+font-size:28px;
+
+}
+
+.activity-card h3{
+
+font-size:28px;
+
+}
+
+.summary-box h2{
+
+font-size:26px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.dashboard-page{
+
+padding:15px;
+
+}
+
+.welcome-card{
+
+padding:25px;
+
+}
+
+.welcome-icon{
+
+width:80px;
+
+height:80px;
+
+font-size:40px;
 
 }
 
 .dashboard-card{
 
-min-width:100%;
+padding:22px;
+
+}
+
+.activity-card{
+
+padding:22px;
+
+}
+
+.quick-actions{
+
+padding:22px;
+
+}
+
+.summary-box{
+
+padding:22px;
 
 }
 
